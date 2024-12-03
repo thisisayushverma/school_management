@@ -1,13 +1,24 @@
 import mysql from "mysql"
 
 const con = mysql.createConnection({
-  host:'localhost',
-  user:'root',
-  password:'qwerty@12345',
-  database:'school_management'
+  host:process.env.HOST,
+  port:process.env.PORT,
+  user:process.env.USERNAME,
+  password:process.env.PASSWORD,
+  database:process.env.DATABASE,
+  connectTimeout: 10000
 })
 
-con.connect((err)=>{
+
+// const con = new Pool({
+//   host:process.env.HOST,
+//   port:process.env.PORT,
+//   user:process.env.USERNAME,
+//   password:process.env.PASSWORD,
+//   database:process.env.DATABASE
+// })
+
+ con.connect((err)=>{
   if(err){
     console.log("Error while Connection DB",err);
   }
