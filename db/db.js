@@ -11,7 +11,7 @@ const con = mysql.createConnection({
   database: process.env.DB_DATABASE || 'test',
   ssl: process.env.TIDB_ENABLE_SSL === 'true' ? {
       minVersion: 'TLSv1.2',
-      ca: process.env.TIDB_CA_PATH ? fs.readFileSync(process.env.TIDB_CA_PATH) : undefined
+      // ca: process.env.TIDB_CA_PATH ? fs.readFileSync(process.env.TIDB_CA_PATH) : undefined
   } : null,
 })
 
