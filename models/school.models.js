@@ -38,6 +38,7 @@ const getSchools = async (req,res) => {
   try {
     con.query("select * from schools",(err,result)=>{
       if(err){
+        console.log("error while getting data",err);
         return res.status(501).json({
           message:"Error while getting list",
           success:false
@@ -54,7 +55,7 @@ const getSchools = async (req,res) => {
 
       pairs.sort((a,b)=> a[0] - b[0])
 
-      console.log(pairs);
+      // console.log(pairs);
       const finalVal = []
 
       pairs.forEach(element =>{
@@ -91,6 +92,7 @@ const addSchool = async (req,res) => {
   try {
     con.query("INSERT INTO schools (name, address, latitude, longitude) VALUES (?, ?, ?, ?)",[name, address, latitude, longitude],(err,result)=>{
         if(err) {
+          console.log("error while adding data",err);
           return res.status(500).json({
             message:"Error while adding data in db, so try again",
             success:false
